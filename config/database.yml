@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgis
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: ruby
+  password: root
+  host: localhost
+
+development:
+  <<: *default
+  database: find_my_hospital_development
+
+test:
+  <<: *default
+  database: find_my_hospital_test
+
+production:
+  <<: *default
+  database: find_my_hospital_production
+  username: find_my_hospital
+  password: <%= ENV['FIND_MY_HOSPITAL_DATABASE_PASSWORD'] %>
